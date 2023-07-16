@@ -1,8 +1,7 @@
-
 const user = {
-  id:'asd@naver.com',
-  pw:'spdlqj123!@'
-}
+  id: 'asd@naver.com',
+  pw: 'spdlqj123!@',
+};
 
 /*
 
@@ -13,24 +12,27 @@ const user = {
 
 */
 
-function emailReg(text){
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+function emailReg(text) {
+  const re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  return re.test(String(text).toLowerCase())
+  return re.test(String(text).toLowerCase());
 }
 
-function pwReg(text){
+function pwReg(text) {
   const re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
   return re.test(String(text).toLowerCase());
 }
 
+function login() {
+  let id = document.querySelector('#userEmail');
+  let password = document.querySelector('#userPassword');
 
-
-
-
-
-
-
-
-
-
+  if (id.value === '' || password.value === '') {
+    alert('아이디 및 비밀번호를 작성해주세요.');
+  } else if (emailReg(id) === false || pwReg(password) === false) {
+    alert('아이디 및  비밀번호를 확인해주세요.');
+  } else {
+    window.location.href = 'welcome.html';
+  }
+}
